@@ -1,6 +1,6 @@
 # E2E Test Tool Benchmark 
 
-This tool runs a pool of Cypress processes in a Kubernetes cluster along with tools to collect, store and visualize their performance (Vector, Prometheus and Grafana)
+This tool runs a pool of Cypress processes in a Kubernetes cluster along with tools to collect, store and visualize their performance.
 
 ## Architecture
 
