@@ -27,7 +27,7 @@ kind load docker-image cypress-vector:latest
 
 ## Running the benchmark
 
-Edit the file `helm/values.yaml` to suit your benchmark scenario.
+Edit the file `helm/values.yaml` to suit your benchmark scenario (target URL, number of concurrent Cypress agents etc).
 
 Inside `helm` directory:
 ```bash
