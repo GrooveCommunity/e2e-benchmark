@@ -47,6 +47,14 @@ Log in with user `admin` and password `prom-operator`
 
 Find and open the dashboard called `Cypress`
 
+![Grafana](docs/grafana.png?raw=true)
+
+Available metrics are (per Cypress agent):
+
+* Visited pages per second 
+* Total visited pages
+* CPU usage 
+
 ## Cleaning up
 
 ```bash
