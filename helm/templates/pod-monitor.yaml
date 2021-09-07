@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: cypress-pod-monitor
+  labels:
+    release: cypress-test     
+spec:
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      app: cypress
+  podMetricsEndpoints:
+  - port: metrics

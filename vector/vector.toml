@@ -1,0 +1,32 @@
+[sources.in]
+type = "file"
+include = [ "/cypress/log/cypress.log" ]
+
+[transforms.parsing]
+  type = "remap" # required
+  inputs = ["in"] # required
+  source = '''
+  . = parse_json!(string!(.message))
+  .host = get_hostname!()
+  '''
+
+[transforms.logs2metrics-events]
+  # General
+  type = "log_to_metric" # required
+  inputs = ["parsing"] # required# Metrics
+  [[transforms.logs2metrics-events.metrics]]
+    # General
+    field = "event" # required
+    name = "event_page_loaded_total" # optional, no default
+    namespace = "cypress" # optional, no default
+    type = "counter" # required
+
+[sinks.prometheus_exporter]
+  type = "prometheus_exporter" # required
+  inputs = ["logs2metrics*"] # required
+  address = "0.0.0.0:9080" # required
+
+[sinks.out]
+inputs = ["parsing"] # required
+type = "console"
+encoding.codec = "json"

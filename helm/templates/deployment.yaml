@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cypress
+  namespace: cypress
+  labels:
+    app: cypress
+spec:
+  replicas: {{ .Values.cypress.replicas }}
+  selector:
+    matchLabels:
+      app: cypress
+  template:
+    metadata:
+      labels:
+        app: cypress   
+    spec:
+      containers:
+      - name: test
+        image: {{ .Values.cypress.image }}
+        imagePullPolicy: Never
+        args:
+{{ toYaml .Values.cypress.args | indent 10 }}        
+        env:
+          - name: CYPRESS_TARGET_URL
+            value: {{ .Values.cypress.config.targetUrl }} 
+          - name: CYPRESS_NUM_ITERATIONS
+            value: "{{ .Values.cypress.config.numIterations }}" 
+        volumeMounts:
+        - mountPath: /cypress/log
+          name: logs      
+        resources:
+          requests:
+            cpu: "1"
+          limits:
+            cpu: "1"            
+      - name: vector
+        image: "cypress-vector:latest"
+        imagePullPolicy: Never
+        args: ["--config", "/vector/vector.toml"]      
+        ports:
+        - containerPort: 9080    
+          name: metrics      
+        volumeMounts:
+        - mountPath: /cypress/log
+          name: logs   
+        resources:
+          requests:
+            cpu: "500m"
+          limits:
+            cpu: "500m"                     
+      volumes:
+      - name: logs
+        emptyDir: {}        

@@ -1,0 +1,13 @@
+cypress:
+  image: "cypress-test:latest"
+  args: 
+    - "run"
+    - "--headless"
+    - "--browser"
+    - "chrome"  # options are `chrome` or `firefox`
+
+  # How many concurrent users
+  replicas: 5
+  config:
+    targetUrl: "https://lite.cnn.com/en"
+    numIterations: 200

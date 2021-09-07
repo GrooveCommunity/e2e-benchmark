@@ -1,0 +1,10 @@
+{
+  "pluginsFile": false,
+  "fixturesFolder": false,
+  "video": false,
+  "env": {
+    "NUM_ITERATIONS": 200,
+    "LOG_PATH": "/cypress/log/cypress.log",
+    "TARGET_URL": "https://picsum.photos/"
+  }
+}
