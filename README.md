@@ -6,6 +6,12 @@ This tool runs a pool of Cypress processes in a Kubernetes cluster along with to
 
 ![Architecture](docs/architecture.png?raw=true)
 
+## Dependencies
+
+* [Docker](https://docs.docker.com/get-docker/)
+* [Helm](https://helm.sh/docs/intro/install/)
+* [Kind](https://kind.sigs.k8s.io/)
+
 ## Installing
 
 Init kind cluster:
