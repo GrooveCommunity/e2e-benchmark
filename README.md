@@ -2,6 +2,10 @@
 
 This tool runs a pool of Cypress processes in a Kubernetes cluster along with tools to collect, store and visualize their performance (Vector, Prometheus and Grafana)
 
+## Architecture
+
+![Architecture](docs/architecture.png?raw=true)
+
 ## Installing
 
 Init kind cluster:
